@@ -16,8 +16,10 @@ export default createVuetify({
   theme: {
     themes: {
       light: {
-        preto: '#000000',
-        branco: '#FFFFFF',
+        colors: {
+          preto: '#000000',
+          branco: '#FFFFFF',
+        }
       },
     }
   },
