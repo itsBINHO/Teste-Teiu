@@ -42,8 +42,8 @@
           contain
           max-height="25"
           max-width="100"
-          class="align-center"/>
-
+          class="align-center"
+        />
       <v-btn icon @click="drawer = !drawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
