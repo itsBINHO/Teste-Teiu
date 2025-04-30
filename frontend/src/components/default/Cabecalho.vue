@@ -1,9 +1,14 @@
 <template>
-  <v-app-bar color="preto" height="100" >
+  <v-app-bar color="preto" height="90" >
     <v-container class="d-none d-md-block">
-      <v-row no-gutters class="px-4 py-2 d-flex align-center border-b border-branco">
+      <v-row no-gutters class="px-2 py-2 d-flex align-center border-b border-branco">
         <v-col cols="3">
-          <v-toolbar-title class="text-h6">Minha Plataforma</v-toolbar-title>
+          <v-img 
+          src="../../assets/votre1.png"
+          contain
+          max-height="40"
+          max-width="130"
+          class="align-center"/>
         </v-col>
 
         <v-col cols="6" class="d-flex justify-center">
@@ -32,7 +37,12 @@
     </v-container>
 
     <v-container class="d-flex d-md-none align-center justify-space-between px-4">
-      <v-toolbar-title class="text-h6">Minha Plataforma</v-toolbar-title>
+      <v-img 
+          src="../../assets/votre1.png"
+          contain
+          max-height="25"
+          max-width="100"
+          class="align-center"/>
 
       <v-btn icon @click="drawer = !drawer">
         <v-icon>mdi-menu</v-icon>
