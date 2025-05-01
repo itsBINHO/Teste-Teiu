@@ -19,6 +19,7 @@ export default createVuetify({
         colors: {
           preto: '#000000',
           branco: '#FFFFFF',
+          cinza: "#f4f4f4"
         }
       },
     }

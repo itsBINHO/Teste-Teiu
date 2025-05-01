@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-preto tamanho-rodape d-flex align-center py-5">
+  <footer class="bg-preto tamanho-rodape d-flex align-center py-5 mt-16">
     <v-container>
       <v-row>
         <v-col cols="12" md="4" class="d-md-none mb-6 d-flex justify-center align-start">
