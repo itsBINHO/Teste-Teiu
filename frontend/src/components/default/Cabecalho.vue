@@ -32,6 +32,7 @@
           <v-btn variant="text" class="text-white">Categoria 2</v-btn>
           <v-btn variant="text" class="text-white">Categoria 3</v-btn>
           <v-btn variant="text" class="text-white">Categoria 4</v-btn>
+          <v-btn variant="text" class="text-white" color="green" @click="irPara('/cadastrar-produto')">Cadastrar Produtos</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -72,14 +73,25 @@
       <v-list-item @click="">
         <v-list-item-title>Categoria 3</v-list-item-title>
       </v-list-item>
-      <v-list-item @click="">
-        <v-list-item-title>Categoria 4</v-list-item-title>
-      </v-list-item>
+      <v-list-item class="cursor-pointer">
+      <v-list-item-title>
+        <v-btn class="text-white" color="green" @click="irPara('/cadastrar-produto')">Cadastrar Produtos</v-btn>
+      </v-list-item-title>
+</v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-const drawer = ref(false)
-</script>
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+const drawer = ref(false);
+
+const irPara = (path) => {
+  router.push({ path });
+};
+
+</script> 
