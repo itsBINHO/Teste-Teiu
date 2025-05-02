@@ -16,5 +16,9 @@
   .padding-listagem {
     padding: 0px 150px;
   }
+
+  .padding-cadastro {
+    padding: 0px 400px;
+  }
 }
 </style>
