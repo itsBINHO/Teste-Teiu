@@ -1,7 +1,10 @@
 <template>
   <v-container class="padding-listagem">
-    <div class="pa-2 mt-8">
-      <p class="text-h6 mb-2">Produtos e Detalhamento</p>
+    <div class="d-flex justify-center align-center border pa-16 mt-8" v-if="produtos.length <= 0">
+      <p class="font-weight-bold text-h6">Nenhum produto dinâmico cadastrado</p>
+    </div>
+    <div class="pa-2 mt-8" v-if="produtos.length > 0">
+      <p class="text-h6 mb-2">Produtos e Detalhamento Dinâmico</p>
       <v-row class="d-flex" wrap>
         <v-col cols="12" md="2" v-for="produto in produtos" :key="produto.id">
           <v-card
