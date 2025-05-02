@@ -41,6 +41,14 @@
             <p class="text-h6 font-weight-bold mb-3">Descrição do Produto</p>
             <p>{{ produto.descricao }}</p>
           </div>
+          <v-row class="mt-5">
+            <v-col cols="12" md="6">
+              <v-btn color="red" block @click="deletarProduto(produto.id)">Apagar Produto</v-btn>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-btn color="preto" block>Editar Produto</v-btn>
+            </v-col>
+          </v-row>
         </div>
       </v-col>
     </v-row>
@@ -49,16 +57,21 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
 import { produtoService } from '@/services';
 import { formatarReais } from '@/utils/formatar-reais.js';
+import { useRouter, useRoute } from "vue-router";
 
 const contador = ref(1);
+const router = useRouter();
 const route = useRoute();
 const id = ref(null);
 const produto = ref({});
 const total = ref(0);
 const desconto = ref(0);
+
+const irPara = (path) => {
+  router.push({ path: path });
+};
 
 const calcularTotais = () => {
   const precoUnitario = Number(produto.value.preco) || 0;
@@ -89,6 +102,18 @@ const getProdutoId = async (id) => {
     calcularTotais();
   } catch (error) {
     console.error('Erro ao buscar produto:', error);
+  }
+};
+
+const deletarProduto = async (id) => {
+  try {
+    const response = await produtoService.deletarProduto(id);
+    alert('Produto deletado com sucesso!');
+    setTimeout(() => {
+      irPara('/');
+    }, 1000);
+  } catch (error) {
+    console.error('Erro ao deletar produto:', error);
   }
 };
 

@@ -10,7 +10,9 @@ class ProdutoService {
   async getProdutoId(id) {
     return await api.post('getById.php', { id });
   }
-
+  async deletarProduto(id) {
+    return await api.delete(`/delete.php?id=${id}`);
+  }
 }
 
 const produtoService = new ProdutoService();
