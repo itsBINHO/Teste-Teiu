@@ -1,5 +1,10 @@
 <template>
-  <v-container class="padding-listagem py-16">
+  <v-container class="padding-listagem py-16" v-if="!produto">
+      <div class="d-flex justify-center align-center border pa-16">
+        <p>Não foi possível encontrar esse produto no banco</p>
+      </div>
+  </v-container>
+  <v-container class="padding-listagem py-16" v-if="produto">
     <v-row>
       <v-col cols="12" md="5">
         <p class="text-body-2 text-grey">Categoria | {{ produto.categoria }}</p>
@@ -65,7 +70,7 @@ const contador = ref(1);
 const router = useRouter();
 const route = useRoute();
 const id = ref(null);
-const produto = ref({});
+const produto = ref(null);
 const total = ref(0);
 const desconto = ref(0);
 
