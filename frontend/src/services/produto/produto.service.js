@@ -7,6 +7,10 @@ class ProdutoService {
   async cadastrarProduto(data){
     return await api.post("/create.php", data)
   }
+  async getProdutoId(id) {
+    return await api.post('getById.php', { id });
+  }
+
 }
 
 const produtoService = new ProdutoService();
