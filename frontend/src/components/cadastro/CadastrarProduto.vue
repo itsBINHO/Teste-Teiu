@@ -101,7 +101,7 @@
               </v-col>
 
               <v-col cols="12" class="d-flex justify-center align-center mt-4">
-                <v-btn color="preto" :disabled="!formValido" @click="enviarForm">Cadastrar</v-btn>
+                <v-btn color="preto" :disabled="!formValido" @click="cadastrarProduto">Cadastrar</v-btn>
               </v-col>
             </v-row>
           </v-form>
@@ -113,6 +113,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { produtoService } from '@/services'
 const formValido = ref(false);
 const categorias = ref(['Limpeza Doméstica', 'Limpeza Pessoal']);
 const dadosFormulario = ref({
@@ -123,6 +124,16 @@ const dadosFormulario = ref({
   frete: null,
   descricao: ''
 });
+
+const cadastrarProduto = async () => {
+  try {
+    const response = await produtoService.cadastrarProduto(dadosFormulario.value);
+    alert(response.data.mensagem);
+  } catch (error) {
+    console.error('Erro ao cadastrar produto:', error);
+    alert('Erro ao cadastrar produto. Tente novamente.');
+  }
+}
 
 const nomeRules = ref([(v) => !!v || "Nome é obrigatória."]);
 const categoriaRules = ref([(v) => !!v || "Categoria é obrigatória."]);
