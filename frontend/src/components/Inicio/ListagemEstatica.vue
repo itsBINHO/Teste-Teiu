@@ -1,7 +1,7 @@
 <template>
-  <v-container style="padding: 0px 150px">
+  <v-container class="padding-listagem">
     <div class="pa-2 mt-8">
-      <p class="text-h6">Mais Ventidos</p>
+      <p class="text-h6 mb-2">Mais Ventidos</p>
       <v-row class="d-flex" wrap>
         <v-col cols="12" md="2">
           <v-card
@@ -98,7 +98,7 @@
       </v-row>
     </div>
     <div class="pa-2 mt-8">
-      <p class="text-h6">Com Descontos</p>
+      <p class="text-h6 mb-2">Com Descontos</p>
       <v-row class="d-flex" wrap>
         <v-col cols="12" md="2">
           <v-card

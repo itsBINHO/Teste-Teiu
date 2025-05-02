@@ -7,5 +7,14 @@
 </template>
 
 <script setup>
-  //
+  
 </script>
+
+<style>
+
+@media (min-width: 768px) {
+  .padding-listagem {
+    padding: 0px 150px;
+  }
+}
+</style>
