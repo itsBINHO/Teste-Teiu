@@ -13,6 +13,9 @@ class ProdutoService {
   async deletarProduto(id) {
     return await api.delete(`/delete.php?id=${id}`);
   }
+  async editarProduto(data) {
+    return await api.post(`/update.php`, data);
+  }
 }
 
 const produtoService = new ProdutoService();

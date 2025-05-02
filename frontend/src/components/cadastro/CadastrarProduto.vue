@@ -132,6 +132,15 @@ const cadastrarProduto = async () => {
   } catch (error) {
     console.error('Erro ao cadastrar produto:', error);
     alert('Erro ao cadastrar produto. Tente novamente.');
+  } finally {
+    dadosFormulario.value = {
+      nome: '',
+      categoria: null,
+      fornecedor: '',
+      preco: null,
+      frete: null,
+      descricao: ''
+    };
   }
 }
 

@@ -51,13 +51,126 @@
               <v-btn color="red" block @click="deletarProduto(produto.id)">Apagar Produto</v-btn>
             </v-col>
             <v-col cols="12" md="6">
-              <v-btn color="preto" block>Editar Produto</v-btn>
+              <v-btn color="preto" block @click="abrirFecharModal">Editar Produto</v-btn>
             </v-col>
           </v-row>
         </div>
       </v-col>
     </v-row>
   </v-container>
+
+  <v-dialog v-model="modalEditarProduto" max-width="1200px">
+    <v-container class="py-16">
+      <v-card class="pa-5 tamanho-modal">
+        <v-row>
+          <v-col cols="12" class="d-flex justify-center">
+            <v-img 
+              src="@/assets/votre-comercial.png"
+              contain
+              max-height="60"
+              max-width="150"
+              class="align-center"
+            />
+          </v-col>
+        </v-row>
+        <v-row class="my-4">
+          <v-col cols="12" class="d-flex justify-center">
+            <p class="text-h5 font-weight-bold">Editar Produto</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-form ref="formContain" v-model="formValido" lazy-validation>
+              <v-row class="px-2">
+
+                <v-col cols="12" md="6">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Nome do Produto:
+                  </label>
+                  <v-text-field
+                    variant="outlined"
+                    density="comfortable"
+                    :placeholder="produto.nome"
+                    :rules="nomeRules"
+                    v-model="dadosEditarFormulario.nome"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Categoria:
+                  </label>
+                  <v-select
+                    variant="outlined"
+                    density="comfortable"
+                    :placeholder="produto.categoria"
+                    :items="categorias"
+                    :rules="categoriaRules"
+                    v-model="dadosEditarFormulario.categoria"
+                  ></v-select>
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Fornecedor:
+                  </label>
+                  <v-text-field
+                    variant="outlined"
+                    density="comfortable"
+                    :placeholder="produto.fornecedor"
+                    :rules="fornecedorRules"
+                    v-model="dadosEditarFormulario.fornecedor"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="3">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Preço:
+                  </label>
+                  <v-text-field
+                    variant="outlined"
+                    density="comfortable"
+                    :placeholder="produto.preco"
+                    :rules="precoRules"
+                    v-model="dadosEditarFormulario.preco"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="3">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Frete:
+                  </label>
+                  <v-text-field
+                    variant="outlined"
+                    density="comfortable"
+                    :placeholder="produto.frete"
+                    :rules="freteRules"
+                    v-model="dadosEditarFormulario.frete"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="12">
+                  <label class="w-100 mb-2 font-weight-bold">
+                    Descrição:
+                  </label>
+                  <v-textarea
+                    variant="outlined"
+                    :placeholder="produto.descricao"
+                    :rules="descricaoRules"
+                    v-model="dadosEditarFormulario.descricao"
+                  ></v-textarea>
+                </v-col>
+
+                <v-col cols="12" class="d-flex justify-center align-center mt-4">
+                  <v-btn color="preto" :disabled="!formValido" @click="editarProduto">Editar</v-btn>
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-container>
+  </v-dialog>
 </template>
 
 <script setup>
@@ -66,6 +179,19 @@ import { produtoService } from '@/services';
 import { formatarReais } from '@/utils/formatar-reais.js';
 import { useRouter, useRoute } from "vue-router";
 
+const nomeRules = ref([(v) => !!v || "Nome é obrigatória."]);
+const categoriaRules = ref([(v) => !!v || "Categoria é obrigatória."]);
+const fornecedorRules = ref([(v) => !!v || "Fornecedor é obrigatório."]);
+const precoRules = ref([
+  (v) => !!v || "Preço é obrigatório.",
+  (v) => !isNaN(parseFloat(v)) || "Preço deve ser numérico.",
+]);
+const freteRules = ref([
+  (v) => !!v || "Frete é obrigatório.",
+  (v) => !isNaN(parseFloat(v)) || "Frete deve ser numérico.",
+]);
+const descricaoRules = ref([(v) => !!v || "Descrição é obrigatório."]);
+
 const contador = ref(1);
 const router = useRouter();
 const route = useRoute();
@@ -73,9 +199,26 @@ const id = ref(null);
 const produto = ref(null);
 const total = ref(0);
 const desconto = ref(0);
+const modalEditarProduto = ref(false);
+const formValido = ref(false);
+const categorias = ref(['Limpeza Doméstica', 'Limpeza Pessoal']);
+
+const dadosEditarFormulario = ref({
+  nome: '',
+  categoria: null,
+  fornecedor: '',
+  preco: null,
+  frete: null,
+  descricao: '',
+  id: null
+});
 
 const irPara = (path) => {
   router.push({ path: path });
+};
+
+const abrirFecharModal = () => {
+  modalEditarProduto.value = !modalEditarProduto.value;
 };
 
 const calcularTotais = () => {
@@ -122,6 +265,28 @@ const deletarProduto = async (id) => {
   }
 };
 
+const editarProduto = async () => {
+  try {
+    dadosEditarFormulario.value.id = id.value;
+    const response = await produtoService.editarProduto(dadosEditarFormulario.value);
+    alert(response.data.mensagem);
+    getProdutoId(id.value);
+    modalEditarProduto.value = false;
+  } catch (error) {
+    console.error('Erro ao editar produto:', error);
+    alert('Erro ao editar produto. Tente novamente.');
+  } finally {
+    dadosEditarFormulario.value = {
+      nome: '',
+      categoria: null,
+      fornecedor: '',
+      preco: null,
+      frete: null,
+      descricao: ''
+    };
+  }
+}
+
 onMounted(() => {
   id.value = route.params.id;
   getProdutoId(id.value);
@@ -134,4 +299,12 @@ onMounted(() => {
   height: 30px;
   background-color: #f0f0f0;
 }
+
+@media (max-width: 959px) {
+  .tamanho-modal {
+    overflow-y: auto !important;
+    max-height: 500px;
+  }
+}
+
 </style>
