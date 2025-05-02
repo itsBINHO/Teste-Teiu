@@ -6,7 +6,7 @@
     <div class="pa-2 mt-8" v-if="produtos.length > 0">
       <p class="text-h6 mb-2">Produtos e Detalhamento Dinâmico</p>
       <v-row class="d-flex" wrap>
-        <v-col cols="12" md="2" v-for="produto in produtos" :key="produto.id">
+        <v-col cols="12" md="2" class="cursor-pointer" v-for="produto in produtos" :key="produto.id" @click="irPara('/detalhamento', produto.id)">
           <v-card
           max-width="344"
           >
@@ -37,8 +37,17 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { produtoService } from '@/services';
+import { useRouter, useRoute } from "vue-router";
 
 const produtos = ref([]);
+
+const router = useRouter();
+const route = useRoute();
+const drawer = ref(false);
+
+const irPara = (path, id) => {
+  router.push({ path: `${path}/${id}` });
+};
 
 const getProdutos = async () => {
   try {

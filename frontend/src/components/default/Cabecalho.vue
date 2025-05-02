@@ -77,7 +77,7 @@
       <v-list-item-title>
         <v-btn class="text-white" color="green" @click="irPara('/cadastrar-produto')">Cadastrar Produtos</v-btn>
       </v-list-item-title>
-</v-list-item>
+    </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
