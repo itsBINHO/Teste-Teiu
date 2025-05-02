@@ -8,10 +8,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     Cabecalho: typeof import('./src/components/default/Cabecalho.vue')['default']
-    Carrousel: typeof import('./src/components/Inicio/Carrousel.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Carousel: typeof import('./src/components/Inicio/Carousel.vue')['default']
+    Detalhamento: typeof import('./src/components/detalhamento/Detalhamento.vue')['default']
+    DetalhamentoProdutos: typeof import('./src/components/detalhamento/DetalhamentoProdutos.vue')['default']
+    ListagemDinamica: typeof import('./src/components/Inicio/ListagemDinamica.vue')['default']
+    ListagemEstatica: typeof import('./src/components/Inicio/ListagemEstatica.vue')['default']
     Rodape: typeof import('./src/components/default/Rodape.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

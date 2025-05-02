@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Default from "@/layouts/default/Default.vue";
 import Inicio from "@/views/Inicio.vue";
 import Detalhamento from "@/views/Detalhamento.vue";
+import Cadastro from "@/views/Cadastro.vue";
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
         path: "/detalhamento/:id",
         name: "Detalhamento",
         component: Detalhamento,
+      },
+      {
+        path: "/cadastrar-produto",
+        name: "Cadastro",
+        component: Cadastro,
       },
     ],
   },
