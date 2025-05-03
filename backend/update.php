@@ -1,25 +1,48 @@
 <?php
 
-  include("conexao.php");
+include("conexao.php");
 
-  header("Access-Control-Allow-Origin: *");
+// CORS headers
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Max-Age: 86400");
+header("Content-Type: application/json");
 
-  $nome = $_POST['nome'] ?? '';
-  $preco = $_POST['preco'] ?? 0;
-  $descricao = $_POST['descricao'] ?? '';
-  $categoria = $_POST['categoria'] ??'';
-  $fornecedor = $_POST['fornecedor'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
-  $stmt = $conn->prepare("UPDATE produtos SET nome = ?, preco = ?, descricao = ?, categoria = ?, fornecedor = ?");
-  $stmt->bind_param("sdsss", $nome, $preco, $descricao, $categoria, $fornecedor);
+// Lê o corpo JSON da requisição
+$data = json_decode(file_get_contents('php://input'), true);
 
-  if ($stmt->execute()) {
-      echo "Produto atualizado.";
-  } else {
-      echo "Erro: " . $stmt->error;
-  }
+// Verifica se todos os campos foram enviados
+if (
+    isset($data['id']) && isset($data['nome']) && isset($data['preco']) &&
+    isset($data['descricao']) && isset($data['categoria']) && isset($data['fornecedor'])
+) {
+    $id = $data['id'];
+    $nome = $data['nome'];
+    $preco = $data['preco'];
+    $descricao = $data['descricao'];
+    $categoria = $data['categoria'];
+    $fornecedor = $data['fornecedor'];
+    $frete = $data['frete'];
 
-  $stmt->close();
-  $conn->close();
+    $stmt = $conn->prepare("UPDATE produtos SET nome = ?, preco = ?, descricao = ?, categoria = ?, fornecedor = ?, frete = ? WHERE id = ?");
+    $stmt->bind_param("sdsssid", $nome, $preco, $descricao, $categoria, $fornecedor, $frete, $id);
 
+    if ($stmt->execute()) {
+        echo json_encode(["mensagem" => "Produto atualizado com sucesso!"]);
+    } else {
+        echo json_encode(["mensagem" => "Erro ao atualizar: " . $stmt->error]);
+    }
+
+    $stmt->close();
+} else {
+    echo json_encode(["mensagem" => "Dados incompletos para atualização."]);
+}
+
+$conn->close();
 ?>
