@@ -9,12 +9,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/teiugelpinho.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Gel pinho
             </v-card-title>
 
             <v-card-subtitle>
@@ -22,7 +21,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 15.69</p>
             </v-card-actions>
           </v-card>
         </v-col>     
@@ -32,12 +31,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/teiumultiuso.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Teiu Multiuso
             </v-card-title>
 
             <v-card-subtitle>
@@ -45,7 +43,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 3.85</p>
             </v-card-actions>
           </v-card>
         </v-col>           
@@ -55,12 +53,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/alvejanteteiu.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Alvejante Teiu
             </v-card-title>
 
             <v-card-subtitle>
@@ -68,7 +65,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 11.79</p>
             </v-card-actions>
           </v-card>
         </v-col>     
@@ -78,12 +75,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/teiudesinfetante.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Desinfetante Teiu
             </v-card-title>
 
             <v-card-subtitle>
@@ -106,12 +102,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/saboneteliquidomaran.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Sabonete Liquido
             </v-card-title>
 
             <v-card-subtitle>
@@ -119,7 +114,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 21.90</p>
             </v-card-actions>
           </v-card>
         </v-col>     
@@ -129,12 +124,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/vassouras.jpg"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Vassouras
             </v-card-title>
 
             <v-card-subtitle>
@@ -142,7 +136,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 17.50</p>
             </v-card-actions>
           </v-card>
         </v-col>           
@@ -152,12 +146,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/teiuhiperideal.png"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Amaciante de Roupas
             </v-card-title>
 
             <v-card-subtitle>
@@ -165,7 +158,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 23.49</p>
             </v-card-actions>
           </v-card>
         </v-col>     
@@ -175,12 +168,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/vatz.webp"
             ></v-img>
 
             <v-card-title>
-              Lava Louças
+              Multiuso Floral
             </v-card-title>
 
             <v-card-subtitle>
@@ -188,7 +180,7 @@
             </v-card-subtitle>
 
             <v-card-actions>
-              <p class="ml-2">R$ 500.00</p>
+              <p class="ml-2">R$ 9.60</p>
             </v-card-actions>
           </v-card>
         </v-col>     

@@ -12,12 +12,11 @@
           >
             <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
+              src="../../assets/produtos/teiugelpinho.jpg"
             ></v-img>
 
             <v-card-title>
-              {{ produto.categoria }}
+              {{ produto.nome }}
             </v-card-title>
 
             <v-card-subtitle>

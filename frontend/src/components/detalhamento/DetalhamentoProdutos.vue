@@ -19,7 +19,7 @@
       <v-col cols="1"></v-col>
       <v-col cols="12" md="6">
         <div>
-          <p class="text-red text-subtitle-1">{{ formatarReais(desconto) }}</p>
+          <p class="text-red text-subtitle-1">{{ formatarReais("-" + desconto) }}</p>
           <p class=" font-weight-bold text-h5">{{ formatarReais(total) }}</p>
           <div class="d-flex justify-center align-center tamanho-incrementador ml-n2">
             <v-card class="border px-1">
