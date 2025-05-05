@@ -14,10 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Lê o corpo JSON da requisição
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Verifica se todos os campos foram enviados
 if (
     isset($data['id']) && isset($data['nome']) && isset($data['preco']) &&
     isset($data['descricao']) && isset($data['categoria']) && isset($data['fornecedor'])

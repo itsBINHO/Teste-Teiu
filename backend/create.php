@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fornecedor = $data['fornecedor'] ?? null;
         $frete = $data['frete'] ?? null;
     } else {
-        // Recebendo formulário (ex: via <form>)
+        
         $nome = $_POST['nome'] ?? null;
         $preco = $_POST['preco'] ?? null;
         $descricao = $_POST['descricao'] ?? null;
@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $frete = $_POST['frete'] ?? null;
     }
 
-    // Validação simples
     if ($nome && $preco && $descricao && $categoria && $fornecedor && $frete) {
         $sql = "INSERT INTO produtos (nome, preco, descricao, categoria, fornecedor, frete) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
