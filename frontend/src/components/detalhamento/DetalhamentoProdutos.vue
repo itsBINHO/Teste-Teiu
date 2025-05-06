@@ -10,9 +10,8 @@
         <p class="text-body-2 text-grey">Categoria | {{ produto.categoria }}</p>
         <p class="text-h6 font-weight-bold mb-3">{{ produto.nome }}</p>
         <v-img
-          height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-          cover
+          height="400px"
+          src="../../assets/produtos/teiugelpinho.jpg"
         >
         </v-img>
       </v-col>
